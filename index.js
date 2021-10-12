@@ -3,7 +3,9 @@ const express = require("express")
 const app = express()
 
 app.get("/", (req,res) => {
-    res.send("<h1>App Node JS.</h1><a>Aplicación NodeJS construida para hacer testing de conceptos devops.</a>");
+    res.send("<h1>App Node JS.</h1><h1>Rodrigo Valdés</h1>" +
+        "<a>Aplicación NodeJS construida para hacer testing de conceptos devops.</a>" +
+    "<h3>Copyright @Cybersyn 2021</h3>");
 });
 
 app.get("/health" , (req,res) =>{
