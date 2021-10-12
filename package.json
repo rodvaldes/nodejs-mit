@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-mit",
+  "version": "1.0.0",
+  "description": "Aplicación de prueba para curso Devops",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon -L index.js"
+  },
+  "keywords": [],
+  "author": "rodrigovaldes@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
