@@ -3,14 +3,6 @@ services:
   node-app:
     build: .
     ports:
-    - "3000:3000"
-    volumes:
-      - ./:/app
-      - /app/node_modules
+      - "3000:3000"
     environment:
       - PORT=3000
-      - ORG=Cybersyn
-      - ANIO=2021
-      - AUTHOR=rodrigovaldes@gmail.com
-#    env_file:
-#      - ./.env
