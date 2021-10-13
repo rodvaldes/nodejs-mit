@@ -17,4 +17,11 @@ Ejecución con Docker Compose
 ```
 docker-compose up -d --build ---> Levanta ambiente de desarrollo.
 docker-compose down          ---> Baja ambiente de desarrollo.
+
+
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
 ```
+
+
+
+https://hub.docker.com/_/mongo
