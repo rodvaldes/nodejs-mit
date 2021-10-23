@@ -1,12 +1,31 @@
 const express = require("express")
 const mongoose = require('mongoose');
+const {MONGO_PORT} = require("./config/config");
+const {MONGO_IP} = require("./config/config");
+const {MONGO_PASSWORD} = require("./config/config");
+const {MONGO_USER} = require('./config/config')
+
+const postRouter = require("./routes/postRoutes")
 
 const app = express()
 
-mongoose.connect(
-    'mongodb://rvaldes:mypassword@mongo:27017/?authSource=admin')
-    .then( () => console.log("Conexión exitosa.!!!"))
-    .catch((e) => console.log(e))
+const MONGO_URL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`
+
+const connectWithRetry = () =>{
+    mongoose.connect(MONGO_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
+        .then( () => console.log("Conexión exitosa a Mongo DB!!!"))
+        .catch((e) => {
+            console.log(e)
+            setTimeout(connectWithRetry,5000)
+        })
+}
+
+connectWithRetry();
+
+app.use(express.json());
 
 app.get("/", (req,res) => {
     res.send("<h1>App Node JS.</h1><h1>Rodrigo Valdés</h1>" +
@@ -17,6 +36,9 @@ app.get("/", (req,res) => {
 app.get("/health" , (req,res) =>{
     res.send("<h1>UP</h1>");
 });
+
+app.use("/api/v1/posts",postRouter)
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`Escuchando conexiones en el puerto ${port}`))
