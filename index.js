@@ -6,6 +6,7 @@ const {MONGO_PASSWORD} = require("./config/config");
 const {MONGO_USER} = require('./config/config')
 
 const postRouter = require("./routes/postRoutes")
+const userRouter = require("./routes/userRoutes")
 
 const app = express()
 
@@ -38,6 +39,7 @@ app.get("/health" , (req,res) =>{
 });
 
 app.use("/api/v1/posts",postRouter)
+app.use("/api/v1/users",userRouter)
 
 const port = process.env.PORT || 3000;
 
