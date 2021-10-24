@@ -58,4 +58,9 @@ docker exec -ti 4eb345d40f60 mongo -u 'rvaldes' -p 'mypassword'
 ```
 
 
+## Habilitación de Docker Watchtower
+
+```
+docker run -d --name watchtower -e WATCHTOWER_TRACE=true -e WATCHTOWER_DEBUG=true -e WATCHTOWER_POLL_INTERVAL=10 -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower 
+```
 
