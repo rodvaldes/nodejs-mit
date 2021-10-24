@@ -37,6 +37,8 @@ const connectWithRetry = () =>{
 
 connectWithRetry();
 
+app.enable("trust proxy");
+
 app.use(session({
     store: new RedisStore({
         client: redisClient,
@@ -53,10 +55,11 @@ app.use(session({
 
 app.use(express.json());
 
-app.get("/", (req,res) => {
+app.get("/api/v1", (req,res) => {
     res.send("<h1>App Node JS.</h1><h1>Rodrigo Valdés</h1>" +
         "<a>Aplicación NodeJS construida para hacer testing de conceptos devops.</a>" +
     "<h3>Copyright @Cybersyn 2021</h3>");
+    console.log("Se ejecutó de manera correcta!!!")
 });
 
 app.get("/health" , (req,res) =>{
