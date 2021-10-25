@@ -27,11 +27,17 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml down 
 ```
 
-### Ejecución en Prod
+### Ejecución en Prod con Docker Compose
 
 ```
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml down 
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+```
+
+
+### Ejecución en Prod con Docker Swarm
+```
+docker stack deploy -c docker-compose.yaml -c docker-compose.prod.yml myapp
 ```
 
 ## Mongo DB
