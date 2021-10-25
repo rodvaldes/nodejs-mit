@@ -16,7 +16,7 @@ docker run -ti --name nodejs-mit -p 3000:4000 --env PORT=4000 --env ORG="Akjj" -
 
 ## Docker Compose
 
-Ejecución con Docker Compose 
+### Ejecución con Docker Compose Desarrollo
 
 ```
 docker-compose up -d --build ---> Levanta ambiente de desarrollo.
@@ -25,6 +25,13 @@ docker-compose down          ---> Baja ambiente de desarrollo.
 
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml down 
+```
+
+### Ejecución en Prod
+
+```
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml down 
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
 ```
 
 ## Mongo DB
